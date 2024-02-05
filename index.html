@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #ffcccb; /* Light pink background */
+      border: 15px solid #ff99aa; /* Cute border color */
+      position: relative;
+    }
+
+    main {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.5em;
+      color: #ff4d4d; /* Reddish-pink text color */
+    }
+
+    .button {
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-transform: uppercase;
+      margin: 10px;
+      font-family: 'Arial', sans-serif;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .Yes, .No {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .Yes {
+      background: #ff6666; /* Light red background */
+      color: #fff;
+    }
+
+    .No {
+      background: #ff1a1a; /* Dark red background */
+      color: #fff;
+    }
+
+    .Yes:hover, .No:hover {
+      background: #ff3333; /* Hover color for buttons */
+    }
+
+    .valentine-text {
+      font-size: 24px;
+      color: #ff4d4d; /* Reddish-pink text color */
+      font-family: 'Arial', sans-serif;
+      display: none;
+      margin-right: 5px;
+      position: absolute;
+    }
+
+    .love-note {
+      font-size: 18px;
+      color: #ff4d4d; /* Reddish-pink text color */
+      font-family: 'Arial', sans-serif;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <img id="catImage" src="https://img.freepik.com/premium-photo/cute-cat-holding-bouquet-tulips-pink-background-generative-ai_58409-30570.jpg" alt="Cute Cat with Tulips">
+    <h1 id="valentine-text">❤️ Be my valentine? ❤️</h1>
+    <button class="button Yes" onclick="celebrate()">Yes</button>
+    <button class="button No" onmouseover="moveNo()">No</button>
+    <div class="valentine-text">💖 Please just say yes 💖</div>
+    <div class="love-note">To Cálìsta Bowser, I love you so much peanut :) ❤️</div>
+  </main>
+  <script>
+    function celebrate() {
+      const valentineText = document.getElementById('valentine-text');
+      valentineText.textContent = 'YAYYYYY ❤️';
+
+      const catImage = document.getElementById('catImage');
+      catImage.src = "https://i.pinimg.com/736x/fa/f0/76/faf076eb4238389559825ef62e7da3f5.jpg";
+
+      document.querySelector('.Yes').style.display = 'none';
+      document.querySelector('.No').style.display = 'none';
+
+      const valentineMessage = document.querySelector('.valentine-text');
+      valentineMessage.style.display = 'none';
+    }
+
+    function moveNo() {
+      const valentineText = document.getElementById('valentine-text');
+      valentineText.textContent = '💔 Please ' + valentineText.textContent;
+
+      const valentineMessage = document.querySelector('.valentine-text');
+      valentineMessage.style.display = 'inline-block';
+
+      // Get the position of the .No button
+      const noButtonRect = document.querySelector('.No').getBoundingClientRect();
+      valentineMessage.style.top = `${noButtonRect.bottom}px`;
+      valentineMessage.style.left = `${noButtonRect.left}px`;
+
+      const noButton = document.querySelector('.No');
+      noButton.style.position = 'absolute';
+      noButton.style.top = `${Math.random() * (100 - 40) + 20}vh`;
+      noButton.style.left = `${Math.random() * (100 - 40) + 20}vw`;
+    }
+  </script>
+</body>
+</html>
